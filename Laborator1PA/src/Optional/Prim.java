@@ -25,9 +25,38 @@ public class Prim {
     // parent[]
     void printMST(int[] parent)
     {
-        System.out.println("Edge");
-        for (int i = 1; i < V; i++)
-            System.out.println(parent[i] + " - " + i);
+        int [][] partialTreeMatrix = new int [V][V];
+        for (int i = 1; i < V; i++) {
+            partialTreeMatrix[i][parent[i]]=1;
+            partialTreeMatrix[parent[i]][i]=1;
+        }
+
+        System.out.println("Partial tree adjacency matrix");
+
+        displayMatrix(partialTreeMatrix, V);
+
+    }
+
+    private void displayMatrix(int[][] matrix, int number) {
+        // drawing the top part of our box for matrix
+        System.out.print("┏");
+        for (int k = 0; k < number * 4; ++k) System.out.print("━");
+        System.out.println("┓");
+
+        // printing the actual matrix with the drawings
+        for (int i = 0; i < number; ++i) {
+            for (int j = 0; j < number; ++j) System.out.print("┃ " + matrix[i][j] + " ");
+            System.out.println(" ┃");
+            if (i != number - 1) {
+                System.out.print("┃");
+                for (int j = 0; j < number * 4; ++j) System.out.print("━");
+                System.out.println("┃");
+            } else {
+                System.out.print("┗");
+                for (int k = 0; k < number * 4; ++k) System.out.print("━");
+                System.out.println("┛");
+            }
+        }
     }
 
     // Function to construct and print MST for a graph represented

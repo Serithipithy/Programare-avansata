@@ -14,7 +14,7 @@ public class Graph extends Prim{
                 // creating the matrix of adjacency
                 int[][] matrix = new int[number][number];
                 generate_random_matrix(matrix, number);
-                //draw_matrix(matrix, number);
+                draw_matrix(matrix, number);
 
                 if (is_connected(matrix, number) == 1) {
                     System.out.println("The graph is connected!");
