@@ -1,6 +1,6 @@
 package Optional;
 
-public class Graph {
+public class Graph extends Prim{
     public static void main(String[] args) {
         if (args.length != 1) { // see if there is one argument
             System.out.println("Not enough arguments or too many!");
@@ -13,16 +13,32 @@ public class Graph {
             } else { // the number is odd
                 // creating the matrix of adjacency
                 int[][] matrix = new int[number][number];
-                int count;
                 generate_random_matrix(matrix, number);
-                draw_matrix(matrix, number);
+                //draw_matrix(matrix, number);
 
-                if ((count = is_connected(matrix, number)) == 1) System.out.println("The graph is connected!");
+                if (is_connected(matrix, number) == 1) {
+                    System.out.println("The graph is connected!");
+                    Prim t = new Prim();
+                    int [][] weighted_matrix = new int [number][number];
+
+                    weightingGraph(weighted_matrix,matrix, number); // adds weight to our graph
+                    t.primMST(weighted_matrix,number); // displays MTS using Prims algorithm ( this is also a partial tree)
+
+                }
                 else {
                     determine_components(matrix, number);
                 }
             }
         }
+    }
+
+    private static void weightingGraph(int[][] weighted_matrix, int [][] matrix, int number) {
+        for (int i = 0; i < number -1 ; ++i)
+            for (int j = i+ 1; j < number; ++j)
+                if(matrix[i][j] == 1){
+                    weighted_matrix[i][j] = (int) (Math.random() * 8);
+                    weighted_matrix[j][i] = weighted_matrix[i][j];
+                }
     }
 
     public static void generate_random_matrix(int[][] matrix, int number) {
@@ -87,7 +103,7 @@ public class Graph {
         // see if the graph is connected or not with dfs
         boolean[] visited = new boolean[1000];
         int count = 0;
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < number; i++) {
             if (!visited[i]) {
                 dfsSimple(i, matrix, visited);
                 ++count;
@@ -99,13 +115,11 @@ public class Graph {
     public static void determine_components(int[][] matrix, int number) {
         // if the graph is not connected we'll determine the connected components using dfs again
         boolean[] visited = new boolean[1000];
-        int count = 0;
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < number; i++) {
             if (!visited[i]) {
                 System.out.println("Component: ");
                 dfs(i, matrix, visited);
                 System.out.println();
-                ++count;
             }
         }
     }
