@@ -26,11 +26,12 @@ public class Graph {
     }
 
     public static void generate_random_matrix(int[][] matrix, int number) {
-        for (int i = 0; i < number; ++i)
-            for (int j = 0; j < number; ++j)
+        for (int i = 0; i < number -1 ; ++i)
+            for (int j = i+ 1; j < number; ++j)
                 if (i == j) matrix[i][j] = 0; // on the main diagonal we'll have 0
                 else {
                     matrix[i][j] = (int) (Math.random() * 2); // a random number ( 0  or 1 )
+                    matrix[j][i] = matrix[i][j];
                 }
     }
 
@@ -84,7 +85,7 @@ public class Graph {
 
     public static int is_connected(int[][] matrix, int number) {
         // see if the graph is connected or not with dfs
-        boolean[] visited = new boolean[10];
+        boolean[] visited = new boolean[1000];
         int count = 0;
         for (int i = 0; i < matrix.length; i++) {
             if (!visited[i]) {
@@ -97,7 +98,7 @@ public class Graph {
 
     public static void determine_components(int[][] matrix, int number) {
         // if the graph is not connected we'll determine the connected components using dfs again
-        boolean[] visited = new boolean[10];
+        boolean[] visited = new boolean[1000];
         int count = 0;
         for (int i = 0; i < matrix.length; i++) {
             if (!visited[i]) {
