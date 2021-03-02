@@ -35,13 +35,14 @@ public class Main {
         int[][] cost = new int[][]{{2, 3, 1}, {5, 4, 8}, {5, 6, 8}};
 
         Problem p = new Problem(sources,destinations,supply,demand,cost);
-//        p.setSources(sources);
-//        p.setDestinations(destinations);
-//        p.setSupply(supply);
-//        p.setDemand(demand);
-//        p.setCost(cost);
 
         System.out.println(p.toString());
+
+        Solution mySolution = new Solution(p);
+        mySolution.solveProblem();
+        System.out.println();
+        System.out.println("Total cost: " + mySolution.getTotalCost());
+        mySolution.displaySteps();
 
     }
 }
