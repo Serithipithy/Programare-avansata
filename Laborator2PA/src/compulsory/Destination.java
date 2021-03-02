@@ -1,5 +1,7 @@
 package compulsory;
 
+import java.util.Objects;
+
 public class Destination {
     private String name;
 
@@ -32,5 +34,10 @@ public class Destination {
         return "Destination{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

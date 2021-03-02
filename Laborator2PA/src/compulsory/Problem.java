@@ -10,11 +10,19 @@ public class Problem {
     private int[][] cost;
 
     public Problem(Source[] sources, Destination[] destinations, int[] supply, int[] demand, int[][] cost) {
-        this.sources = sources;
-        this.destinations = destinations;
-        this.supply = supply;
-        this.demand = demand;
-        this.cost = cost;
+        try {
+            verSource(sources);
+            verDestination(destinations);
+            this.sources = sources;
+            this.destinations = destinations;
+            this.supply = supply;
+            this.demand = demand;
+            this.cost = cost;
+        }
+        catch(IllegalArgumentException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public Problem() {
@@ -25,7 +33,14 @@ public class Problem {
     }
 
     public void setSources(Source[] sources) {
-        this.sources = sources;
+        try{
+            verSource(sources);
+            this.sources = sources;
+        }
+        catch(IllegalArgumentException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public Destination[] getDestinations() {
@@ -33,7 +48,14 @@ public class Problem {
     }
 
     public void setDestinations(Destination[] destinations) {
-        this.destinations = destinations;
+        try{
+            verDestination(destinations);
+            this.destinations = destinations;
+        }
+        catch(IllegalArgumentException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public int[] getSupply() {
@@ -58,6 +80,25 @@ public class Problem {
 
     public void setCost(int[][] cost) {
         this.cost = cost;
+    }
+    public void verDestination(Destination[] destinations){
+        for(int i = 0 ; i < destinations.length ; i++ ){
+            for (int j = i+1 ; j < destinations.length ; j++ ) {
+                if (destinations[i].equals(destinations[j])) {
+                    throw new IllegalArgumentException("Cannot have two sources with the same name!");
+                }
+            }
+        }
+    }
+
+    public void verSource(Source[] src){
+        for(int i = 0 ; i < src.length ; i++ ){
+            for (int j = i+1 ; j < src.length ; j++ ) {
+                if (src[i].equals(src[j])) {
+                    throw new IllegalArgumentException("Cannot have two sources with the same name!");
+                }
+            }
+        }
     }
 
     @Override

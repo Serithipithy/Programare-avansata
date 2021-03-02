@@ -4,17 +4,13 @@ package compulsory;
 public class Main {
 
     public static void main(String[] args) {
-        Source s1 = new Source();
-        Source s2 = new Source();
-        Source s3 = new Source();
+        Source s1 = new Factory();
+        Source s2 = new Warehouse();
+        Source s3 = new Warehouse();
 
         s1.setName("S1");
-        s1.setType(Source.SourceType.FACTORY);
         s2.setName("S2");
-        s2.setType(Source.SourceType.WAREHOUSE);
         s3.setName("S3");
-        s3.setType(Source.SourceType.WAREHOUSE);
-
         Source[] sources = new Source[]{s1, s2, s3};
 
         Destination d1 = new Destination();
@@ -38,12 +34,12 @@ public class Main {
 
         int[][] cost = new int[][]{{2, 3, 1}, {5, 4, 8}, {5, 6, 8}};
 
-        Problem p = new Problem();
-        p.setSources(sources);
-        p.setDestinations(destinations);
-        p.setSupply(supply);
-        p.setDemand(demand);
-        p.setCost(cost);
+        Problem p = new Problem(sources,destinations,supply,demand,cost);
+//        p.setSources(sources);
+//        p.setDestinations(destinations);
+//        p.setSupply(supply);
+//        p.setDemand(demand);
+//        p.setCost(cost);
 
         System.out.println(p.toString());
 
