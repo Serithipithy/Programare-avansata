@@ -3,7 +3,7 @@ package compulsory;
 import java.util.Objects;
 
 public class Warehouse extends Source {
-    private static final String type="Warehouse";
+    private static final String type = "Warehouse";
 
     @Override
     public String getName() {
@@ -12,7 +12,7 @@ public class Warehouse extends Source {
 
     @Override
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     @Override

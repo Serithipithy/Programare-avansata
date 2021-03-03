@@ -34,7 +34,7 @@ public class Main {
 
         int[][] cost = new int[][]{{2, 3, 1}, {5, 4, 8}, {5, 6, 8}};
 
-        Problem p = new Problem(sources,destinations,supply,demand,cost);
+        Problem p = new Problem(sources, destinations, supply, demand, cost);
 
         System.out.println(p.toString());
 

@@ -18,9 +18,7 @@ public class Problem {
             this.supply = supply;
             this.demand = demand;
             this.cost = cost;
-        }
-        catch(IllegalArgumentException e)
-        {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -33,12 +31,10 @@ public class Problem {
     }
 
     public void setSources(Source[] sources) {
-        try{
+        try {
             verSource(sources);
             this.sources = sources;
-        }
-        catch(IllegalArgumentException e)
-        {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -48,12 +44,10 @@ public class Problem {
     }
 
     public void setDestinations(Destination[] destinations) {
-        try{
+        try {
             verDestination(destinations);
             this.destinations = destinations;
-        }
-        catch(IllegalArgumentException e)
-        {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -81,9 +75,10 @@ public class Problem {
     public void setCost(int[][] cost) {
         this.cost = cost;
     }
-    public void verDestination(Destination[] destinations){
-        for(int i = 0 ; i < destinations.length ; i++ ){
-            for (int j = i+1 ; j < destinations.length ; j++ ) {
+
+    public void verDestination(Destination[] destinations) {
+        for (int i = 0; i < destinations.length; i++) {
+            for (int j = i + 1; j < destinations.length; j++) {
                 if (destinations[i].equals(destinations[j])) {
                     throw new IllegalArgumentException("Cannot have two sources with the same name!");
                 }
@@ -91,9 +86,9 @@ public class Problem {
         }
     }
 
-    public void verSource(Source[] src){
-        for(int i = 0 ; i < src.length ; i++ ){
-            for (int j = i+1 ; j < src.length ; j++ ) {
+    public void verSource(Source[] src) {
+        for (int i = 0; i < src.length; i++) {
+            for (int j = i + 1; j < src.length; j++) {
                 if (src[i].equals(src[j])) {
                     throw new IllegalArgumentException("Cannot have two sources with the same name!");
                 }

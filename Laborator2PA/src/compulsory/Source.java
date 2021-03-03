@@ -6,7 +6,7 @@ abstract class Source {
 
     public String name;
 
-    public abstract String getName() ;
+    public abstract String getName();
 
     public abstract void setName(String name);
 
