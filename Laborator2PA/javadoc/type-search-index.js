@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"compulsory","l":"Destination"},{"p":"compulsory","l":"Factory"},{"p":"compulsory","l":"Main"},{"p":"compulsory","l":"Problem"},{"p":"compulsory","l":"Solution.Shipment"},{"p":"compulsory","l":"Solution"},{"p":"compulsory","l":"Source"},{"p":"compulsory","l":"Warehouse"}];updateSearchResults();
