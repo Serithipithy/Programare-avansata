@@ -5,13 +5,16 @@ import java.util.List;
 
 public class TravelPlan {
     City cityName;
-    List<Location> listPreferences = new LinkedList<>();
+    List<Location> listPreferences;
 
+    // constructor
     public TravelPlan(City cityName, List<Location> listPreferences) {
         this.cityName = cityName;
+        this.listPreferences = new LinkedList<>();
         this.listPreferences = listPreferences;
     }
 
+    // setters and getters
     public City getCityName() {
         return cityName;
     }
@@ -40,8 +43,7 @@ public class TravelPlan {
         this.listPreferences = listPreferences;
     }
 
-    // method to add a new location to the list
-
+    // add a new location to the list
     public void addLocation(Location newLocation) {
         int j;
         for (j = 0; j < cityName.getNodes().size(); j++) {

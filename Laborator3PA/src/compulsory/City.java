@@ -35,17 +35,17 @@ public class City {
         nodes.add(node);
     }
 
-    public void showVisitableNotPayable() {
+    public void showVisitableNotPayable() { // creates an arraylist of locations that are visitable, but not payable
         List<Location> locations = new ArrayList<>();
         for (Location node : nodes) {
             if (node instanceof Visitable && !(node instanceof Payable)) {
                 locations.add(node);
             }
         }
-        sortAndPrint(locations);
+        sortAndPrint(locations); // will sort and print the arraylist
     }
 
-    private void sortAndPrint(List<Location> locations) {
+    private void sortAndPrint(List<Location> locations) { // sorts and prints the arraylist of locations based on the opening time ascending
         for (int i = 0; i < locations.size(); i++)
             for (int j = i + 1; j < locations.size(); j++) {
                 if (((Visitable) locations.get(j)).getOpeningTime().isBefore(((Visitable) locations.get(i)).getOpeningTime())) {
