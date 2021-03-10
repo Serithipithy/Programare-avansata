@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class City {
-    private List<Location> nodes = new ArrayList<>();
+    private List<Location> nodes;
     private String cityName;
 
     public City(List<Location> nodes, String cityName) {
@@ -33,6 +33,30 @@ public class City {
 
     public void addLocation(Location node) {
         nodes.add(node);
+    }
+
+    public void showVisitableNotPayable() {
+        List<Location> locations = new ArrayList<>();
+        for (Location node : nodes) {
+            if (node instanceof Visitable && !(node instanceof Payable)) {
+                locations.add(node);
+            }
+        }
+        sortAndPrint(locations);
+    }
+
+    private void sortAndPrint(List<Location> locations) {
+        for (int i = 0; i < locations.size(); i++)
+            for (int j = i + 1; j < locations.size(); j++) {
+                if (((Visitable) locations.get(j)).getOpeningTime().isBefore(((Visitable) locations.get(i)).getOpeningTime())) {
+                    Location aux = locations.get(i);
+                    locations.set(i, locations.get(j));
+                    locations.set(j, aux);
+                }
+            }
+        for (Location location : locations) {
+            System.out.println("Location " + location.getName() + " opens at " + ((Visitable) location).getOpeningTime());
+        }
     }
 
     @Override

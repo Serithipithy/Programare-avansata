@@ -54,11 +54,15 @@ public class Main {
         v4.setCost(v6,10);
         v5.setCost(v4,30);
         v5.setCost(v6,20);
-//        v3.setCost(v2,20);
-//        v4.setCost(v5,30);
 
-//        System.out.println(myCity.toString());
+        myCity.showVisitableNotPayable();
 
+        // duration for Museum B
+        System.out.println();
+        System.out.println(Visitable.getVisitingDuration(v3).getHoursOpen());
+
+        List<Location> planLocations = Arrays.asList(v1,v2,v3,v4);
+        TravelPlan plan1 = new TravelPlan(myCity,planLocations);
     }
 
 }
