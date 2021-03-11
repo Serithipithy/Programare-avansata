@@ -67,4 +67,9 @@ public abstract class Location implements Comparable<Location>
         return this.name.compareTo(other.name);
         //not safe, check if name is null before
     }
+
+    public static int compare(Location a, Location b){
+        return ((Visitable) a).getOpeningTime().compareTo(((Visitable) b).getOpeningTime());
+    }
+
 }
