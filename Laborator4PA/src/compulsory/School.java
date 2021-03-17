@@ -39,7 +39,7 @@ public class School implements Comparable<School>{
 
     @Override
     public String toString() {
-        return "\nSchool{" +
+        return "School{" +
                 "name='" + name + '\'' +
                 ", capacity=" + capacity +
                 '}';

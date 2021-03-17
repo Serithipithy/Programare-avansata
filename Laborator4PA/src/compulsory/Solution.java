@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
-    Map<Student,School> pairings = new HashMap<>();
+    Map<Student, School> pairings = new HashMap<>();
 
     // constructors
 

@@ -8,14 +8,15 @@ import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
+        Faker faker = new Faker();
 
         // student objects using streams
         var students = IntStream.rangeClosed(0, 3)
-                .mapToObj(i -> new Student("S" + i))
+                .mapToObj(i -> new Student(faker.name().fullName()))
                 .toArray(Student[]::new);
         // school objects using streams
         var highschools = IntStream.rangeClosed(0, 2)
-                .mapToObj(i -> new School("H" + i))
+                .mapToObj(i -> new School(faker.university().name()))
                 .toArray(School[]::new);
         highschools[0].setCapacity(1);
         highschools[1].setCapacity(2);
@@ -27,8 +28,8 @@ public class Main {
         Collections.sort(studentList,
                 (Comparator.comparing(Student::getName)));
 
-        Set<School> schoolList = new TreeSet<>();
-        schoolList.addAll(Arrays.asList(highschools));
+        Set<School> schoolSet = new TreeSet<>();
+        schoolSet.addAll(Arrays.asList(highschools)); // won't add the last school ???
 
         Map<Student, List<School>> stdPrefMap = new HashMap<>();
         stdPrefMap.put(students[0], Arrays.asList(highschools[0], highschools[1], highschools[2]));
@@ -68,25 +69,16 @@ public class Main {
         List<Student> result = studentList.stream()
                 .filter(std -> stdPrefMap.get(std).containsAll(target))
                 .collect(Collectors.toList());
-        System.out.println("Schools "+highschools[0].getName()+", "+ highschools[2].getName()+" are found acceptable by "+result);
+        System.out.println("Schools " + highschools[0].getName() + ", " + highschools[2].getName() + " are found acceptable by " + result);
 
-        Set<School> topStudent =  schoolList.stream()
+        Set<School> topStudent = schoolSet.stream()
                 .filter(school -> {
                     List<Student> preferredStudents = hscPrefMap.get(school); //getting all schools from the preferences map
                     //check if the school has any preferences and if the top priority matches our student
                     return !preferredStudents.isEmpty() && preferredStudents.get(0).equals(students[0]);
                 }).collect(Collectors.toSet());
 
-        System.out.println("top student at this schools"+topStudent);
+        System.out.println("\ntop student at this schools : " + topStudent);
 
-
-
-        Faker faker = new Faker();
-        
-//        String name = faker.name().fullName(); // Miss Samanta Schmidt
-//        String firstName = faker.name().firstName(); // Emory
-//        String lastName = faker.name().lastName(); // Barton
-//
-//        String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
     }
 }
