@@ -1,6 +1,9 @@
 package compulsory;
 
+import com.github.javafaker.Faker;
+
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -60,5 +63,30 @@ public class Main {
         hscPrefMap.put(highschools[2], prefList2);
 
         System.out.println(hscPrefMap.toString());
+
+        List<School> target = Arrays.asList(highschools[0], highschools[2]);
+        List<Student> result = studentList.stream()
+                .filter(std -> stdPrefMap.get(std).containsAll(target))
+                .collect(Collectors.toList());
+        System.out.println("Schools "+highschools[0].getName()+", "+ highschools[2].getName()+" are found acceptable by "+result);
+
+        Set<School> topStudent =  schoolList.stream()
+                .filter(school -> {
+                    List<Student> preferredStudents = hscPrefMap.get(school); //getting all schools from the preferences map
+                    //check if the school has any preferences and if the top priority matches our student
+                    return !preferredStudents.isEmpty() && preferredStudents.get(0).equals(students[0]);
+                }).collect(Collectors.toSet());
+
+        System.out.println("top student at this schools"+topStudent);
+
+
+
+        Faker faker = new Faker();
+        
+//        String name = faker.name().fullName(); // Miss Samanta Schmidt
+//        String firstName = faker.name().firstName(); // Emory
+//        String lastName = faker.name().lastName(); // Barton
+//
+//        String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
     }
 }
