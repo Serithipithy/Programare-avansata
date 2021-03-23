@@ -39,7 +39,7 @@ public class Catalog implements Serializable {
     }
 
     public void setPath(String path) throws InvalidCatalogData {
-        if (!path.contains("https") && !path.contains("D:")) throw new InvalidCatalogData(" wrong path format");
+        if (!path.contains("https") && (!path.contains("D:"))) throw new InvalidCatalogData(" wrong path format");
         this.path = path;
     }
 
