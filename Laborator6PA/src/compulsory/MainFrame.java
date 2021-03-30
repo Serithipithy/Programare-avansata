@@ -3,31 +3,27 @@ package compulsory;
 import javax.swing.*;
 import java.awt.BorderLayout;
 
-
 public class MainFrame extends JFrame {
-    ConfigPanel configPanel;
-    ControlPanel controlPanel;
-    DrawingPanel canvas;
+	ConfigPanel configPanel;
+	ControlPanel controlPanel;
+	DrawingPanel canvas;
 
-    public MainFrame() {
-        super("My Drawing Application");
-        init();
-    }
+	public MainFrame() {
+		super("My Drawing Application");
+		init();
+	}
 
-    private void init() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+	private void init() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        configPanel=new ConfigPanel(this);
-        controlPanel=new ControlPanel(this);
-        canvas = new DrawingPanel(this);
-        setLayout(new BorderLayout());
-       // arrange the components in the container (frame)
-       // JFrame uses a BorderLayout by default
-        add(controlPanel,BorderLayout.SOUTH);
-        add(configPanel,BorderLayout.NORTH);
-        add(canvas,BorderLayout.CENTER); //this is BorderLayout.CENTER
+		configPanel = new ConfigPanel(this);
+		controlPanel = new ControlPanel(this);
+		canvas = new DrawingPanel(this);
+		setLayout(new BorderLayout());
+		add(controlPanel, BorderLayout.SOUTH);
+		add(configPanel, BorderLayout.NORTH);
+		add(canvas, BorderLayout.CENTER);
 
-        pack();
-    }
-
+		pack(); //sizes the frame so that all its contents are at or above their preferred sizes
+	}
 }
