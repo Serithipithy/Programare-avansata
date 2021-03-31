@@ -43,9 +43,9 @@ public class DrawingPanel extends JPanel {
 
 	private void drawShape(int x, int y) {
 		int radius = new Random().nextInt(30 - 5) + 5; //(MAX - MIN) + MIN
-		int sides = frame.configPanel.getSidesNo();
-		int toErase = frame.configPanel.getShapeToDeleteNo() - 1;
-		frame.configPanel.setShapeToDeleteNo(0);
+		int sides = frame.configPanel.getSidesNo(); // gets no of sides
+		int toErase = frame.configPanel.getShapeToDeleteNo() - 1; // the no of the shape we want to erase
+		frame.configPanel.setShapeToDeleteNo(0); // resets the JSpinner deleteField to 0
 		Color color = frame.configPanel.getCurrentColor();
 		String shape = frame.configPanel.getCurrentShape();
 

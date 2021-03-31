@@ -40,17 +40,9 @@ public class ControlPanel extends JPanel {
 	}
 
 	private void save(ActionEvent e) {
-		BufferedImage image2 = new BufferedImage(frame.WIDTH, frame.HEIGHT, BufferedImage.TYPE_INT_RGB);
-		JFileChooser jFile = new JFileChooser();
-		jFile.showSaveDialog(null);
-		Path pth = jFile.getSelectedFile().toPath();
-		JOptionPane.showMessageDialog(null, pth.toString());
-		Graphics2D graphics2D = image2.createGraphics();
 		try {
-			ImageIO.write(image2, "", new File(pth.toString()));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
+			ImageIO.write(frame.canvas.image, "PNG", new File("C:\\Users\\Alexandra\\Desktop\\test.png"));
+		} catch (IOException ex) { System.err.println(ex); }
 	}
 
 		private void load (ActionEvent e){
