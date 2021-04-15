@@ -1,0 +1,34 @@
+drop table TYPE cascade constraints ;
+drop table MOVIES cascade constraints;
+drop table GENRES cascade constraints;
+
+create table MOVIES
+(
+    ID           NUMBER        not null
+        constraint MOVIES_PK
+            primary key,
+    TITLE        VARCHAR2(100) not null,
+    RELEASE_DATE DATE,
+    DURATION     NUMBER,
+    SCORE        NUMBER
+)
+/
+
+create table GENRES
+(
+    ID   NUMBER       not null
+        constraint GENRES_PK
+            primary key,
+    NAME VARCHAR2(20) not null
+)
+/
+create table TYPE
+(
+    ID_MOVIE NUMBER not null
+        constraint TYPE_GENRES_ID_FK
+            references GENRES
+        constraint TYPE_MOVIES_ID_FK
+            references MOVIES,
+    ID_GENRE NUMBER not null
+)
+/
