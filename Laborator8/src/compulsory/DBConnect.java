@@ -1,7 +1,6 @@
 package compulsory;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+
 public class DBConnect {
     private static DBConnect singletonConnection=null;
     private Connection conn ;
@@ -34,6 +33,15 @@ public class DBConnect {
             singletonConnection = new DBConnect(path);
         }
         return singletonConnection;
+    }
+
+    public static void executeStatement(String toString) {
+        try {
+            Statement stmt = singletonConnection.conn.createStatement();
+            stmt.execute(toString);
+        } catch (SQLException exc) {
+            System.out.println(exc.getMessage());
+        }
     }
 
     public Connection getConn() {

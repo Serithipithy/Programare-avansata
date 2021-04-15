@@ -8,6 +8,10 @@ public interface Dao<T> {
 
     List<T> getAll(DBConnect conn);
 
-    void insert(DBConnect conn);
+    void insert();
+
+    void findIndex();
+
+    void findByName();
 
 }

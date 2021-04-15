@@ -9,5 +9,8 @@ public class Main {
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
         }
+
+        Movie Interstellar = new Movie(123,"Interstellar","07/11/2014",169,10);
+        Interstellar.insert();
     }
 }
