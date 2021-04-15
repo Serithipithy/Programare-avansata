@@ -6,7 +6,6 @@ public class DBConnect {
     private Connection conn ;
 
     public DBConnect(String path) throws SQLException {
-        Connection conn = null;
         try {
             // db parameters
             String url = "jdbc:sqlite:" + path;
@@ -41,6 +40,16 @@ public class DBConnect {
             stmt.execute(toString);
         } catch (SQLException exc) {
             System.out.println(exc.getMessage());
+        }
+    }
+
+    public static void closeConnection() {
+        try {
+            if (singletonConnection.conn != null) {
+                singletonConnection.conn.close();
+            }
+        } catch (SQLException exc2) {
+            System.out.println(exc2.getMessage());
         }
     }
 

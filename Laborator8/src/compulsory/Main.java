@@ -12,5 +12,10 @@ public class Main {
 
         Movie Interstellar = new Movie(123,"Interstellar","07/11/2014",169,10);
         Interstellar.insert();
+        try {
+            DBConnect.closeConnection();
+        } catch (Exception exc) {
+            System.out.println(exc.getMessage());
+        }
     }
 }
