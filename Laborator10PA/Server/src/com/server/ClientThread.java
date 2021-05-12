@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 public class ClientThread extends Thread {
     private Socket socket = null;
@@ -55,7 +56,7 @@ public class ClientThread extends Thread {
                             else response = "Fail, try again!";
                             break;
                         case "send":
-                            request = request.replace("send ", " ");
+                            request = request.replace("send", " ");
                             if (Application.sendCommand.execute(username, request) && !username.equals(""))
                                 response = "Message send";
                             else response = "Fail, try again!";
@@ -95,7 +96,8 @@ public class ClientThread extends Thread {
             }
 
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -6,16 +6,11 @@ public class RegisterCommand implements ICommand {
 
     @Override
     public boolean execute(String username, String text) {
-        if(validateText(text)){
+        if(!Application.getUsers().containsKey(username)){
             Application.addUser(username);
             return true;
         }
         return false;
     }
 
-    @Override
-    public boolean validateText(String text) {
-        if(text.equals("") || text.isEmpty()) return true;
-        return false;
-    }
 }

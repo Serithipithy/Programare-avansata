@@ -28,7 +28,7 @@ public class Client {
                 if(canWrite) {
                     out.println(request);
                     String response = in.readLine();
-                    System.out.println(response);
+                    System.out.println(response.substring(0,response.length()-1));
                     while(!response.endsWith("~")){
                         response = in.readLine();
                         System.out.println(response);

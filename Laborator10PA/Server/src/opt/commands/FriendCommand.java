@@ -3,7 +3,7 @@ package opt.commands;
 public class FriendCommand extends Application implements ICommand{
     @Override
     public boolean execute(String username, String text) {
-        if(validateText(text)){
+        if(!text.isEmpty()){
             if(text.contains(" ")) {
                 String[] friends = text.split(" ");
                 for (String friend : friends) {
@@ -30,8 +30,4 @@ public class FriendCommand extends Application implements ICommand{
         return false;
     }
 
-    @Override
-    public boolean validateText(String text) {
-        return true;
-    }
 }

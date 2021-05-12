@@ -8,7 +8,6 @@ public class Application {
 
     private static int connectedUsers = 0;
     private static Map<String,User> users = new HashMap<>();
-    private static Application instance = new Application();
     public static boolean stopInitiated = false;
     public static ICommand loginCommand = new LoginCommand();
     public static ICommand registerCommand = new RegisterCommand();
@@ -20,9 +19,6 @@ public class Application {
     public static int getConnectedUsers() {
         return connectedUsers;
     }
-    public static Application getInstance() {
-        return instance;
-    }
     public static Map<String, User> getUsers() {
         return users;
     }
@@ -33,9 +29,7 @@ public class Application {
     public static void addConnection(){
         ++connectedUsers;
     }
-    public static void removeConnection(){
-        --connectedUsers;
-    }
+    public static void removeConnection(){--connectedUsers; }
 
 
 }

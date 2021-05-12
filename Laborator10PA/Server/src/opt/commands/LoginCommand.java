@@ -12,9 +12,4 @@ public class LoginCommand implements ICommand{
         else return false;
     }
 
-    @Override
-    public boolean validateText(String text) {
-        if(text.equals("")) return true;
-        return false;
-    }
 }

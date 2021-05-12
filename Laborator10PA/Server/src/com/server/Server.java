@@ -11,13 +11,13 @@ public class Server {
     public static final int PORT = 8100;
     public Server() throws IOException {
         ServerSocket serverSocket = null ;
-        Application application = Application.getInstance();
         try {
             serverSocket = new ServerSocket(PORT);
             while (true) {
                 System.out.println ("Waiting for a client ...");
                 Socket socket = serverSocket.accept();
                 // Execute the client's request in a new thread
+                socket.setSoTimeout(20*1000); // time out for socket
                 new ClientThread(socket).start();
             }
         } catch (IOException e) {
