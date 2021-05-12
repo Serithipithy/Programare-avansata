@@ -1,5 +1,7 @@
 package com.server;
 
+import opt.commands.Application;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,6 +11,7 @@ public class Server {
     public static final int PORT = 8100;
     public Server() throws IOException {
         ServerSocket serverSocket = null ;
+        Application application = Application.getInstance();
         try {
             serverSocket = new ServerSocket(PORT);
             while (true) {

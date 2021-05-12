@@ -22,17 +22,21 @@ public class Client {
             Scanner keyboard = new Scanner(System.in);
             String request="";
             boolean canWrite=true;
-            while(!request.equals("exit")) {
+            while(!request.equals("exit") && !request.equals("stop")) {
                 System.out.print("Command:");
                 request = keyboard.nextLine();
                 if(canWrite) {
                     out.println(request);
                     String response = in.readLine();
                     System.out.println(response);
-                    if (response.equals("Server stopped.")) canWrite=false;
+                    while(!response.endsWith("~")){
+                        response = in.readLine();
+                        System.out.println(response);
+                    }
+                    if (response.equals("Connection stopped.")) canWrite=false;
                 }
             }
-            out.println("stop");
+            out.println(request);
         } catch (UnknownHostException e) {
             System.err.println("No server listening... " + e);
         }
