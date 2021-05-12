@@ -1,27 +1,28 @@
 package opt.commands;
 
-public class FriendCommand extends Application implements ICommand{
+public class FriendCommand implements ICommand {
     @Override
     public boolean execute(String username, String text) {
-        if(!text.isEmpty()){
-            if(text.contains(" ")) {
+        if (!text.isEmpty()) {
+            if (text.contains(" ")) {
                 String[] friends = text.split(" ");
                 for (String friend : friends) {
-                    if (getUsers().containsKey(friend)) {
-                        if (!getUsers().get(username).getFriends().contains(getUsers().get(friend))) // see if they are already friends
+                    if (Application.getUsers().containsKey(friend)) {
+                        if (!Application.getUsers().get(username).getFriends().contains(Application.getUsers().get(friend)))
+                            // see if they are already friends
                         {
-                            getUsers().get(username).addFriends(getUsers().get(friend));
-                            getUsers().get(friend).addFriends(getUsers().get(username));
+                            Application.getUsers().get(username).addFriends(Application.getUsers().get(friend));
+                            Application.getUsers().get(friend).addFriends(Application.getUsers().get(username));
                         }
                     }
                 }
-            }
-            else{
-                if (getUsers().containsKey(text)) {
-                    if (!getUsers().get(username).getFriends().contains(getUsers().get(text))) // see if they are already friends
+            } else {
+                if (Application.getUsers().containsKey(text)) {
+                    if (!Application.getUsers().get(username).getFriends().contains(Application.getUsers().get(text)))
+                        // see if they are already friends
                     {
-                        getUsers().get(username).addFriends(getUsers().get(text));
-                        getUsers().get(text).addFriends(getUsers().get(username));
+                        Application.getUsers().get(username).addFriends(Application.getUsers().get(text));
+                        Application.getUsers().get(text).addFriends(Application.getUsers().get(username));
                     }
                 }
             }

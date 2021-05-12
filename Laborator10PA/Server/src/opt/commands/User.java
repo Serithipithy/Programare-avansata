@@ -5,7 +5,7 @@ import java.util.List;
 
 public class User {
     private String username;
-    private List<User> friends=new ArrayList();
+    private List<User> friends = new ArrayList();
 
     public User(String username) {
         this.username = username;

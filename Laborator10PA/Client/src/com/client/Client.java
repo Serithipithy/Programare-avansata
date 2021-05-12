@@ -9,31 +9,31 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class Client {
-    public static void main (String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         String serverAddress = "127.0.0.1"; // The server's IP address
         int PORT = 8100; // The server's port
         try (
                 Socket socket = new Socket(serverAddress, PORT);
                 PrintWriter out =
                         new PrintWriter(socket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader (
-                        new InputStreamReader(socket.getInputStream())) ) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(socket.getInputStream()))) {
             // Send a request to the server
             Scanner keyboard = new Scanner(System.in);
-            String request="";
-            boolean canWrite=true;
-            while(!request.equals("exit") && !request.equals("stop")) {
+            String request = "";
+            boolean canWrite = true;
+            while (!request.equals("exit") && !request.equals("stop")) {
                 System.out.print("Command:");
                 request = keyboard.nextLine();
-                if(canWrite) {
+                if (canWrite) {
                     out.println(request);
                     String response = in.readLine();
-                    System.out.println(response.substring(0,response.length()-1));
-                    while(!response.endsWith("~")){
+                    System.out.println(response.substring(0, response.length() - 1));
+                    while (!response.endsWith("~")) {
                         response = in.readLine();
                         System.out.println(response);
                     }
-                    if (response.equals("Connection stopped.")) canWrite=false;
+                    if (response.equals("Connection stopped.")) canWrite = false;
                 }
             }
             out.println(request);

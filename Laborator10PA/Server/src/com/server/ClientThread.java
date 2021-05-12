@@ -30,7 +30,7 @@ public class ClientThread extends Thread {
             while (!socket.isClosed()) {
                 request = in.readLine();
                 String[] requestList;
-                if(request != null) {
+                if (request != null) {
                     requestList = request.split(" ");
 
                     switch (requestList[0]) {
@@ -79,16 +79,16 @@ public class ClientThread extends Thread {
                     }
                 }
                 try {
-                        response = response+"~";
-                        out.println(response);
-                        out.flush();
-                        System.out.println(Application.getConnectedUsers());
-                        if (response.equals("Connection stopped.~")) {
-                            if(Application.stopInitiated && Application.getConnectedUsers() == 0){
-                                System.exit(0);
-                            }
-                            socket.close();
+                    response = response + "~";
+                    out.println(response);
+                    out.flush();
+                    System.out.println(Application.getConnectedUsers());
+                    if (response.equals("Connection stopped.~")) {
+                        if (Application.stopInitiated && Application.getConnectedUsers() == 0) {
+                            System.exit(0);
                         }
+                        socket.close();
+                    }
 
                 } catch (IOException e) {
                     System.err.println("Communication error... " + e);
@@ -96,8 +96,7 @@ public class ClientThread extends Thread {
             }
 
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

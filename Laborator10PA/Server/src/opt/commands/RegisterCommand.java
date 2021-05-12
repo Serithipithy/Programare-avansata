@@ -1,12 +1,12 @@
 package opt.commands;
 
 public class RegisterCommand implements ICommand {
-    public RegisterCommand(){
+    public RegisterCommand() {
     }
 
     @Override
     public boolean execute(String username, String text) {
-        if(!Application.getUsers().containsKey(username)){
+        if (!Application.getUsers().containsKey(username)) {
             Application.addUser(username);
             return true;
         }

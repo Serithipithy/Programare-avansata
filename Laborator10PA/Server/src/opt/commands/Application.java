@@ -6,8 +6,8 @@ import java.util.Map;
 public class Application {
 
 
-    private static int connectedUsers = 0;
-    private static Map<String,User> users = new HashMap<>();
+    private static int connectedUsers = 0; // no of connected people to the network
+    private static Map<String, User> users = new HashMap<>();
     public static boolean stopInitiated = false;
     public static ICommand loginCommand = new LoginCommand();
     public static ICommand registerCommand = new RegisterCommand();
@@ -16,20 +16,26 @@ public class Application {
 
     public Application() {
     }
+
     public static int getConnectedUsers() {
         return connectedUsers;
     }
+
     public static Map<String, User> getUsers() {
         return users;
     }
 
-    public static void addUser(String username){
-        Application.users.put(username,new User(username));
+    public static void addUser(String username) {
+        Application.users.put(username, new User(username));
     }
-    public static void addConnection(){
+
+    public static void addConnection() {
         ++connectedUsers;
     }
-    public static void removeConnection(){--connectedUsers; }
+
+    public static void removeConnection() {
+        --connectedUsers;
+    }
 
 
 }
