@@ -14,7 +14,9 @@ public class FriendCommand implements ICommand {
                             Application.getUsers().get(username).addFriends(Application.getUsers().get(friend));
                             Application.getUsers().get(friend).addFriends(Application.getUsers().get(username));
                         }
+                        else return false;
                     }
+                    else return false;
                 }
             } else {
                 if (Application.getUsers().containsKey(text)) {
@@ -24,7 +26,9 @@ public class FriendCommand implements ICommand {
                         Application.getUsers().get(username).addFriends(Application.getUsers().get(text));
                         Application.getUsers().get(text).addFriends(Application.getUsers().get(username));
                     }
+                    else return false;
                 }
+                else return false;
             }
             return true;
         }
