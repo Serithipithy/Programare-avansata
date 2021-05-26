@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/styles/songStyle.css}" rel="stylesheet">
+    <title>OurMusic</title>
+</head>
+<body>
+<h1>Top Songs</h1>
+<div class="button--positioning">
+    <a class="button" href="/ourmusic/addSong">Add song</a>
+</div>
+<br/><br/><br/>
+<section>
+    <div th:each="song : ${songs}" class="songsContainer">
+        <div class="song">
+            <p class="color"><span th:text="${song.singer}"></span> - <span th:text="${song.title}"></span></p>
+            <a class="color" th:href="${song.link}">Click to Listen</a>
+            <p class="color" th:text="${song.numberVotes}">No votes</p>
+        </div>
+        <form method="post">
+            <input name="songId" th:value="${song.idSong}" hidden>
+            <input class="button--vote" type="submit" value="Vote">
+        </form>
+    </div>
+</section>
+</body>
+</html>

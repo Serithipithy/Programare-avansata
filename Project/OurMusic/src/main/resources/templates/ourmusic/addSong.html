@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/styles/style.css}" rel="stylesheet">
+    <title>OurMusic</title>
+</head>
+<body>
+<div>
+    <div class="addSongForm">
+        <h2 class="title"> Add a new song </h2>
+        <form method="post">
+            <input class="form" type="text" name="songSinger" placeholder="Artist"/>
+            <input class="form" type="text" name="songTitle" placeholder="Title"/>
+            <input class="form" type="text" name="songLink" placeholder="Link"/>
+            <input class="form button" type="submit" value="Add song">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

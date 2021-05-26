@@ -1,0 +1,46 @@
+* {
+    font-family: fantasy;
+}
+
+body {
+    margin-top: 10%;
+    margin-left: 33%;
+}
+
+input {
+    margin-bottom: 1em;
+    width: 18.5em;
+    height: 2em;
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: bolder;
+}
+
+.addSongForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20em;
+    height: 20em;
+    padding: 4em;
+    box-shadow: 10px 8px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+.form {
+    display: block;
+}
+
+.button {
+    color: rgb(133, 133, 133);
+    background-color: white;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    width: 10em;
+    border: none;
+    font-size: 1em;
+    border-radius: 45px;
+    margin-top: 2em;
+    margin-left: 2.8em;
+}
