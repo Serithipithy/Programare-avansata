@@ -1,0 +1,11 @@
+1.Functionalitati
+	OurMusic este o aplicatie web care se ocupa cu gestionarea topurilor muzicale.
+	Pe pagina principala se va afisa topul muzical al melodiilor din baza de date in functie de voturile oferite de utilizatorii aplicatiei. Tot pe aceasta pagina este disponibil un buton care va redirectiona utilizatorul spre pagina de adaugare a unei noi melodii in baza de date.
+	Pagina de adaugare a unei melodii este una de tip formular in care utilizatorului ii sunt solicitate 2 informatii despre melodia pe care doreste sa o introduca in top: artistul melodiei, titlul melodiei si un link unde se poate audia aceasta. Odata ce melodia este adaugata, utilizatorul este redirectionat pe pagina principala a topului, cel din urma fiind updatat.
+	Un utilizator poate vota o melodie de mai multe ori, iar topul va fi actualizat in mod constant.
+
+2.Tehnologiile folosite
+ 	Aplicatia este realizata cu ajutorul frameworkului Spring Boot.
+	Sistemul de baze de date folosit este PostgreSQL.
+	Pentru lucrul cu baza de date s-a folosit JPA impreuna cu Hibernate. Cu ajutorul Persitence-ului s-au generat entitatile specifice tabelelor din baza de date iar in continuare s-a realizat MVC-ul aplicatiei si REST API-ul pentru interactivitate.
+	Deoarece aplicatia se bazeaza pe MVC s-a utilizat motorul de sablonare Thymeleaf pentru a pune la dispozitie o interfata placuta utilizatorului.
